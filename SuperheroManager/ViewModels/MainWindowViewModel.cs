@@ -92,7 +92,7 @@ namespace SuperheroManager.ViewModels
                );
 
             EditSuperhero = new RelayCommand(
-               () => { },//TODO
+               () => logic.EditSuperhero(selectedFromHQ),//TODO
                ()=>SelectedFromHQ != null
                );
         }

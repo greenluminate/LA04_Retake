@@ -1,5 +1,6 @@
 ﻿using Microsoft.Toolkit.Mvvm.Messaging;
 using SuperheroManager.Models;
+using SuperheroManager.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,12 @@ namespace SuperheroManager.Logic
         IList<Superhero> SuperheroesInHQ;
         IList<Superhero> SuperheroesInBattle;
         IMessenger Messenger;
+        IEditSuperheroViaWindow editSuperhero;
 
-        public SuperheroLogic(IMessenger messenger)
+        public SuperheroLogic(IMessenger messenger, IEditSuperheroViaWindow editSuperhero)
         {
             Messenger = messenger;
+            this.editSuperhero = editSuperhero;
         }
         public void SetupCollections(IList<Superhero> SuperheroesInHQ, IList<Superhero> SuperheroesInBattle)
         {
@@ -33,6 +36,12 @@ namespace SuperheroManager.Logic
         {
             SuperheroesInHQ.Add(superhero);
             Messenger.Send("Superhero Created", "SuperheroInfo");
+        }
+        public void EditSuperhero(Superhero superhero)
+        {
+            editSuperhero.Edit(superhero);
+            Messenger.Send("SuperheroEdited", "SuperheroInfo");
+
         }
     }
 }
