@@ -16,6 +16,8 @@ namespace SuperheroManager.Logic
 
         public SuperheroLogic(IMessenger messenger)
         {
+            SuperheroesInHQ = superheroesInHQ;
+            SuperheroesInBattle = superheroesInBattle;
             Messenger = messenger;
         }
         public void SetupCollections(IList<Superhero> SuperheroesInHQ, IList<Superhero> SuperheroesInBattle)
@@ -27,6 +29,12 @@ namespace SuperheroManager.Logic
         {
             SuperheroesInBattle.Add(superhero);
             Messenger.Send("SuperheroAdded", "SuperheroInfo");
+
+        }
+        public void CreateSuperhero(Superhero superhero)
+        {
+            SuperheroesInHQ.Add(superhero);
+            Messenger.Send("Superhero Created", "SuperheroInfo");
         }
     }
 }

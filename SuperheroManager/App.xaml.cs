@@ -1,5 +1,5 @@
-﻿using Microsoft.Toolkit.Mvvm.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using System;
 using System.Collections.Generic;
@@ -21,8 +21,8 @@ namespace SuperheroManager
         {
             Ioc.Default.ConfigureServices(
               new ServiceCollection()
+              //.AddSingleton<ICreateSuperheroService, CreateSuperheroViaWindow>()
               .AddSingleton<ISuperheroLogic, SuperheroLogic>()
-              //.AddSingleton<ITrooperEditorService, TrooperEditorViaWindow>()
               .AddSingleton<IMessenger>(WeakReferenceMessenger.Default)
               .BuildServiceProvider()
               );

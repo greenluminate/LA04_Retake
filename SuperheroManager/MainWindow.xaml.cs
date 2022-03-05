@@ -23,6 +23,8 @@ namespace SuperheroManager
         public MainWindow()
         {
             InitializeComponent();
+            CreateSuperheroWindow csw = new CreateSuperheroWindow();
+            csw.ShowDialog();
         }
     }
 }
