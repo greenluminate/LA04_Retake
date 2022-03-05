@@ -9,5 +9,6 @@ namespace SuperheroManager.Logic
         void SetupCollections(IList<Superhero> SuperheroesInHQ, IList<Superhero> SuperheroesInBattle);
         void CreateSuperhero();
         void AddToHQ(Superhero superhero);
+        void RemoveFromBattle(Superhero superhero);
     }
 }

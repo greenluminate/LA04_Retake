@@ -83,7 +83,7 @@ namespace SuperheroManager.ViewModels
                 );
 
             RemoveFromBattle = new RelayCommand(
-               () => { },//TODO
+               () => superheroLogic.RemoveFromBattle(SelectedFromBattle),
                () => SelectedFromBattle != null
                );
 
