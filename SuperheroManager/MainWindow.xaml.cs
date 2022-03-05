@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Mvvm.DependencyInjection;
+using SuperheroManager.Helpers;
+using SuperheroManager.Models;
+using SuperheroManager.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +24,19 @@ namespace SuperheroManager
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        IJsonManager jsonManager;
+        public MainWindow(IJsonManager jsonManager)
         {
             InitializeComponent();
+            this.jsonManager = jsonManager;
+        }
+        public MainWindow() : this(Ioc.Default.GetService<IJsonManager>())
+        {
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            jsonManager.SuperheroWriter((this.DataContext as MainWindowViewModel).SuperheroesInHQ);
         }
     }
 }

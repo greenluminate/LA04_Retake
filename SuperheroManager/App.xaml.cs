@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using SuperheroManager.Logic;
 using SuperheroManager.Services;
+using SuperheroManager.Helpers;
 
 namespace SuperheroManager
 {
@@ -23,6 +24,7 @@ namespace SuperheroManager
             Ioc.Default.ConfigureServices(
               new ServiceCollection()
               .AddSingleton<ICreateSuperheroViaWindow, CreateSuperheroViaWindow>()
+              .AddSingleton<IJsonManager, JsonManager>()
               .AddSingleton<IEditSuperheroViaWindow, EditSuperheroViaWindow>()
               .AddSingleton<ISuperheroLogic, SuperheroLogic>()
               .AddSingleton<IMessenger>(WeakReferenceMessenger.Default)

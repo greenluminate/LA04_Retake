@@ -1,6 +1,7 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
+using SuperheroManager.Helpers;
 using SuperheroManager.Logic;
 using SuperheroManager.Models;
 using System;
@@ -49,7 +50,7 @@ namespace SuperheroManager.ViewModels
         public ICommand CreateSuperhero { get; set; }
         public ICommand EditSuperhero { get; set; }
 
-
+        IJsonManager jsonManager;
         ISuperheroLogic superheroLogic;
         public static bool IsInDesignMode
         {
@@ -59,21 +60,13 @@ namespace SuperheroManager.ViewModels
                 return (bool)DependencyPropertyDescriptor.FromProperty(prop, typeof(FrameworkElement)).Metadata.DefaultValue;
             }
         }
-        public MainWindowViewModel(ISuperheroLogic logic)
+        public MainWindowViewModel(ISuperheroLogic logic, IJsonManager jsonManager)
         {
             this.superheroLogic = logic;
+            this.jsonManager = jsonManager;
             SuperheroesInHQ = new ObservableCollection<Superhero>();
             SuperheroesInBattle = new ObservableCollection<Superhero>();
-
-
-            SuperheroesInHQ.Add(new Superhero() { Name = "Iron Man", Power = 5, Side = SideEnum.good, Speed = 8 });
-            SuperheroesInHQ.Add(new Superhero() { Name = "Thor", Power = 9, Side = SideEnum.good, Speed = 7 });
-            SuperheroesInHQ.Add(new Superhero() { Name = "Thanos", Power = 10, Side = SideEnum.evil, Speed = 3 });
-            SuperheroesInHQ.Add(new Superhero() { Name = "Collector", Power = 2, Side = SideEnum.neutral, Speed = 2 });
-
-            SuperheroesInBattle.Add(SuperheroesInHQ[0].GetCopy());
-            SuperheroesInBattle.Add(SuperheroesInHQ[2].GetCopy());
-            SuperheroesInBattle.Add(SuperheroesInHQ[3].GetCopy());
+            SuperheroesInHQ = this.jsonManager.DeserializeHeroes();
 
             logic.SetupCollections(SuperheroesInHQ, SuperheroesInBattle);
 
@@ -118,7 +111,7 @@ namespace SuperheroManager.ViewModels
             }
         }
 
-        public MainWindowViewModel() : this(IsInDesignMode ? null : Ioc.Default.GetService<ISuperheroLogic>())
+        public MainWindowViewModel() : this(IsInDesignMode ? null : Ioc.Default.GetService<ISuperheroLogic>(), IsInDesignMode ? null : Ioc.Default.GetService<IJsonManager>())
         {
 
         }
