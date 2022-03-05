@@ -8,6 +8,6 @@ namespace SuperheroManager.Models
 {
     public enum SideEnum
     {
-        good, eviel, neutral
+        good, evil, neutral
     }
 }

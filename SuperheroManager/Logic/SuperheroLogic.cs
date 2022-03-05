@@ -23,7 +23,7 @@ namespace SuperheroManager.Logic
 
         public void CreateSuperhero(Superhero superhero)
         {
-
+            SuperheroesInHQ.Add(superhero);
             Messenger.Send("Superhero Created", "SuperheroInfo");
         }
     }
