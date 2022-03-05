@@ -92,8 +92,8 @@ namespace SuperheroManager.ViewModels
                );
 
             EditSuperhero = new RelayCommand(
-               () => { },//TODO
-               () => SelectedFromHQ != null
+               () => logic.EditSuperhero(selectedFromHQ),//TODO
+               ()=>SelectedFromHQ != null
                );
 
             Messenger.Register<MainWindowViewModel, string, string>(this, "SuperheroInfo", (recipient, msg) =>

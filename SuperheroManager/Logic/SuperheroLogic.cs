@@ -15,11 +15,13 @@ namespace SuperheroManager.Logic
         IList<Superhero> SuperheroesInBattle;
         IMessenger Messenger;
         ICreateSuperheroViaWindow createWindow;
+        IEditSuperheroViaWindow editSuperhero;
 
-        public SuperheroLogic(IMessenger messenger, ICreateSuperheroViaWindow createWindow)
+        public SuperheroLogic(IMessenger messenger, IEditSuperheroViaWindow editSuperhero, ICreateSuperheroViaWindow createWindow)
         {
             this.createWindow = createWindow;
             Messenger = messenger;
+            this.editSuperhero = editSuperhero;
         }
         public void SetupCollections(IList<Superhero> SuperheroesInHQ, IList<Superhero> SuperheroesInBattle)
         {
@@ -63,6 +65,12 @@ namespace SuperheroManager.Logic
             {
                 return Math.Round(SuperheroesInBattle.Count == 0 ? 0 : SuperheroesInBattle.Average(t => t.Speed), 2);
             }
+        }
+        public void EditSuperhero(Superhero superhero)
+        {
+            editSuperhero.Edit(superhero);
+            Messenger.Send("SuperheroEdited", "SuperheroInfo");
+
         }
     }
 }

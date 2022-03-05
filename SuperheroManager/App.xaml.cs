@@ -23,6 +23,7 @@ namespace SuperheroManager
             Ioc.Default.ConfigureServices(
               new ServiceCollection()
               .AddSingleton<ICreateSuperheroViaWindow, CreateSuperheroViaWindow>()
+              .AddSingleton<IEditSuperheroViaWindow, EditSuperheroViaWindow>()
               .AddSingleton<ISuperheroLogic, SuperheroLogic>()
               .AddSingleton<IMessenger>(WeakReferenceMessenger.Default)
               .BuildServiceProvider()
