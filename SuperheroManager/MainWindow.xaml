@@ -51,10 +51,10 @@
             <Button Content="Remove from battle" Margin="10" Padding="10" Command="{Binding RemoveFromBattle}"/>
             <Button Content="Create a superhero" Margin="10" Padding="10" Command="{Binding CreateSuperhero}"/>
             <Button Content="Edit a superhero" Margin="10" Padding="10" Command="{Binding EditSuperhero}"/>
-            <Label Content="0" ContentStringFormat="Average Power: {0}" HorizontalAlignment="Center"/>
-            <ProgressBar Maximum="10" Margin="10" Height="10" Value="{Binding AvgPower}" Foreground="{Binding AvgPower, Converter={StaticResource numtocolor}}"/>
-            <Label Content="0" ContentStringFormat="Average Speed: {0}" HorizontalAlignment="Center"/>
-            <ProgressBar Maximum="10" Margin="10" Height="10" Value="{Binding AvgSpeed}" Foreground="{Binding AvgSpeed, Converter={StaticResource numtocolor}}"/>
+            <Label Content="{Binding AVGPower}" ContentStringFormat="Average Power: {0}" HorizontalAlignment="Center"/>
+            <ProgressBar Maximum="10" Margin="10" Height="10" Value="{Binding AVGPower, Mode=OneWay}" Foreground="{Binding AVGPower, Converter={StaticResource numtocolor}}"/>
+            <Label Content="{Binding AVGSpeed}" ContentStringFormat="Average Speed: {0}" HorizontalAlignment="Center"/>
+            <ProgressBar Maximum="10" Margin="10" Height="10" Value="{Binding AVGSpeed, Mode=OneWay}" Foreground="{Binding AVGSpeed, Converter={StaticResource numtocolor}}"/>
 
         </StackPanel>
         <ListBox Grid.Column="2" ItemsSource="{Binding SuperheroesInBattle}" HorizontalContentAlignment="Stretch" SelectedItem="{Binding SelectedFromBattle}">

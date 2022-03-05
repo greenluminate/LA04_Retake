@@ -48,5 +48,21 @@ namespace SuperheroManager.Logic
             SuperheroesInBattle.Remove(superhero);
             Messenger.Send("Superhero Removed From Battle", "SuperheroInfo");
         }
+
+        public double AVGPower
+        {
+            get
+            {
+                return Math.Round(SuperheroesInBattle.Count == 0 ? 0 : SuperheroesInBattle.Average(t => t.Power), 2);
+            }
+        }
+
+        public double AVGSpeed
+        {
+            get
+            {
+                return Math.Round(SuperheroesInBattle.Count == 0 ? 0 : SuperheroesInBattle.Average(t => t.Speed), 2);
+            }
+        }
     }
 }

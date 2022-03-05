@@ -95,7 +95,29 @@ namespace SuperheroManager.ViewModels
                () => { },//TODO
                () => SelectedFromHQ != null
                );
+
+            Messenger.Register<MainWindowViewModel, string, string>(this, "SuperheroInfo", (recipient, msg) =>
+            {
+                OnPropertyChanged("AVGPower");
+                OnPropertyChanged("AVGSpeed");
+            });
         }
+        public double AVGPower
+        {
+            get
+            {
+                return superheroLogic.AVGPower;
+            }
+        }
+
+        public double AVGSpeed
+        {
+            get
+            {
+                return superheroLogic.AVGSpeed;
+            }
+        }
+
         public MainWindowViewModel() : this(IsInDesignMode ? null : Ioc.Default.GetService<ISuperheroLogic>())
         {
 

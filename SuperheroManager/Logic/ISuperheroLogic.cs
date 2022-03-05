@@ -10,5 +10,8 @@ namespace SuperheroManager.Logic
         void CreateSuperhero();
         void AddToHQ(Superhero superhero);
         void RemoveFromBattle(Superhero superhero);
+
+        double AVGPower { get; }
+        double AVGSpeed { get; }
     }
 }
