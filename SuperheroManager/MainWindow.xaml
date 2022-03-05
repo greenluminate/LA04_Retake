@@ -13,6 +13,7 @@
     </Window.DataContext>
     <Window.Resources>
         <helpers:EnumToColorConverter x:Key="enumtocolor"/>
+        <helpers:NumberToColorConverter x:Key="numtocolor"/>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
