@@ -14,11 +14,14 @@ namespace SuperheroManager.Logic
         IList<Superhero> SuperheroesInBattle;
         IMessenger Messenger;
 
-        public SuperheroLogic(IList<Superhero> superheroesInHQ, IList<Superhero> superheroesInBattle, IMessenger messenger)
+        public SuperheroLogic(IMessenger messenger)
         {
-            SuperheroesInHQ = superheroesInHQ;
-            SuperheroesInBattle = superheroesInBattle;
             Messenger = messenger;
+        }
+        public void SetupCollections(IList<Superhero> SuperheroesInHQ, IList<Superhero> SuperheroesInBattle)
+        {
+            this.SuperheroesInHQ = SuperheroesInHQ;
+            this.SuperheroesInBattle = SuperheroesInBattle;
         }
         public void AddToBattle(Superhero superhero)
         {

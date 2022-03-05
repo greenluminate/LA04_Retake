@@ -8,6 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using SuperheroManager.Logic;
 
 namespace SuperheroManager
 {
@@ -20,7 +21,7 @@ namespace SuperheroManager
         {
             Ioc.Default.ConfigureServices(
               new ServiceCollection()
-              //.AddSingleton<ISuperHeroLogic, SuperheroLogic>()
+              .AddSingleton<ISuperheroLogic, SuperheroLogic>()
               //.AddSingleton<ITrooperEditorService, TrooperEditorViaWindow>()
               .AddSingleton<IMessenger>(WeakReferenceMessenger.Default)
               .BuildServiceProvider()
