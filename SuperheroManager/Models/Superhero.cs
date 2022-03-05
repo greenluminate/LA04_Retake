@@ -14,7 +14,7 @@ namespace SuperheroManager.Models
         public SideEnum Side
         {
             get { return side; }
-            set { SetProperty( ref side, value); }
+            set { SetProperty(ref side, value); }
         }
 
         private int speed;
@@ -39,6 +39,17 @@ namespace SuperheroManager.Models
         {
             get { return name; }
             set { SetProperty(ref name, value); }
+        }
+
+        public Superhero GetCopy()
+        {
+            return new Superhero()
+            {
+                Side = this.Side,
+                Speed = this.Speed,
+                Power = this.Power,
+                Name = this.name
+            };
         }
     }
 }
