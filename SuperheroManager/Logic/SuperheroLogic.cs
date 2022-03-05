@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SuperheroManager.Logic
 {
-    public partial class SuperheroLogic
+    public partial class SuperheroLogic : ISuperheroLogic
     {
         IList<Superhero> SuperheroesInHQ;
         IList<Superhero> SuperheroesInBattle;

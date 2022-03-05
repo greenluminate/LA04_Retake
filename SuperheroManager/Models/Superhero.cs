@@ -37,6 +37,10 @@ namespace SuperheroManager.Models
             get { return name; }
             set { SetProperty(ref name, value); }
         }
+        public Superhero GetCopy()
+        { 
+        return new Superhero() { Name=this.name, Power=this.Power, Side=this.Side, Speed=this.Speed};
+        }
 
 
 
