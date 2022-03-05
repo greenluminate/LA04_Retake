@@ -16,8 +16,6 @@ namespace SuperheroManager.Logic
 
         public SuperheroLogic(IMessenger messenger)
         {
-            SuperheroesInHQ = superheroesInHQ;
-            SuperheroesInBattle = superheroesInBattle;
             Messenger = messenger;
         }
         public void SetupCollections(IList<Superhero> SuperheroesInHQ, IList<Superhero> SuperheroesInBattle)
