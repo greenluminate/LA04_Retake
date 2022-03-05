@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SuperheroManager.Services
 {
-    public class CreateSuperheroViaWindow
+    public class CreateSuperheroViaWindow : ICreateSuperheroViaWindow
     {
         public void Create(Superhero superhero)
         {
