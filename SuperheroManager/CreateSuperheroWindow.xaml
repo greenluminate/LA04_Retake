@@ -25,7 +25,7 @@
         <Label Content="Power" Padding="10" Background="LightBlue"/>
         <TextBox x:Name="tb_power" Text="" Padding="10"/>
         <Label Content="Side" Padding="10" Background="LightBlue"/>
-        <WrapPanel>
+        <WrapPanel x:Name="wp_side">
             <RadioButton GroupName="rb_side" Content="{Binding Source={StaticResource sideEnumData}, Path=[0], Mode=OneWay}" IsChecked="True" Margin="10"/>
             <RadioButton GroupName="rb_side" Content="{Binding Source={StaticResource sideEnumData}, Path=[1], Mode=OneWay}" Margin="10"/>
             <RadioButton GroupName="rb_side" Content="{Binding Source={StaticResource sideEnumData}, Path=[2], Mode=OneWay}" Margin="10"/>

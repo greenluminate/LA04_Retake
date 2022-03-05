@@ -1,27 +1,30 @@
 ﻿using SuperheroManager.Models;
+using SuperheroManager.Logic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 
 namespace SuperheroManager.ViewModels
 {
     public class CreateSuperheroWindowViewModel
     {
-        public Superhero Actual { get; set; }
-
-        public CreateSuperheroWindowViewModel()
+        ISuperheroLogic superheroLogic;
+        public CreateSuperheroWindowViewModel() : this(Ioc.Default.GetService<ISuperheroLogic>())
         {
-            Actual = new Superhero()
-            {
 
-            };
+        }
+
+        public CreateSuperheroWindowViewModel(ISuperheroLogic superheroLogic)
+        {
+            this.superheroLogic = superheroLogic;
         }
 
         public void Setup(Superhero superhero)
         {
-            this.Actual = superhero;
+            superheroLogic.AddToHQ(superhero);
         }
     }
 }

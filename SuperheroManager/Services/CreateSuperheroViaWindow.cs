@@ -9,7 +9,7 @@ namespace SuperheroManager.Services
 {
     public class CreateSuperheroViaWindow : ICreateSuperheroViaWindow
     {
-        public void Create(Superhero superhero)
+        public void Create()
         {
             new CreateSuperheroWindow().ShowDialog();
         }

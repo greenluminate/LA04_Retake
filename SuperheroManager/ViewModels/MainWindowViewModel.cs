@@ -15,7 +15,7 @@ using System.Windows.Input;
 
 namespace SuperheroManager.ViewModels
 {
-    public partial class MainWindowViewModel:ObservableRecipient
+    public partial class MainWindowViewModel : ObservableRecipient
     {
         public ObservableCollection<Superhero> SuperheroesInHQ { get; set; }
         public ObservableCollection<Superhero> SuperheroesInBattle { get; set; }
@@ -24,20 +24,20 @@ namespace SuperheroManager.ViewModels
         public Superhero SelectedFromHQ
         {
             get { return selectedFromHQ; }
-            set 
-            { 
+            set
+            {
                 SetProperty(ref selectedFromHQ, value);
                 (AddToBattle as RelayCommand).NotifyCanExecuteChanged();
                 (EditSuperhero as RelayCommand).NotifyCanExecuteChanged();
-            
+
             }
         }
-        private Superhero selectedFromBattle;   
+        private Superhero selectedFromBattle;
 
         public Superhero SelectedFromBattle
         {
             get { return selectedFromBattle; }
-            set 
+            set
             {
                 SetProperty(ref selectedFromBattle, value);
                 (RemoveFromBattle as RelayCommand).NotifyCanExecuteChanged();
@@ -48,7 +48,7 @@ namespace SuperheroManager.ViewModels
         public ICommand RemoveFromBattle { get; set; }
         public ICommand CreateSuperhero { get; set; }
         public ICommand EditSuperhero { get; set; }
-        
+
 
         ISuperheroLogic superheroLogic;
         public static bool IsInDesignMode
@@ -62,9 +62,9 @@ namespace SuperheroManager.ViewModels
         public MainWindowViewModel(ISuperheroLogic logic)
         {
             this.superheroLogic = logic;
-            SuperheroesInHQ=new ObservableCollection<Superhero>();
-            SuperheroesInBattle=new ObservableCollection<Superhero>();
-            
+            SuperheroesInHQ = new ObservableCollection<Superhero>();
+            SuperheroesInBattle = new ObservableCollection<Superhero>();
+
 
             SuperheroesInHQ.Add(new Superhero() { Name = "Iron Man", Power = 5, Side = SideEnum.good, Speed = 8 });
             SuperheroesInHQ.Add(new Superhero() { Name = "Thor", Power = 9, Side = SideEnum.good, Speed = 7 });
@@ -88,18 +88,17 @@ namespace SuperheroManager.ViewModels
                );
 
             CreateSuperhero = new RelayCommand(
-               () => { }//TODO
+               () => superheroLogic.CreateSuperhero()
                );
 
             EditSuperhero = new RelayCommand(
                () => { },//TODO
-               ()=>SelectedFromHQ != null
+               () => SelectedFromHQ != null
                );
         }
-        public MainWindowViewModel():this(IsInDesignMode ? null: Ioc.Default.GetService<ISuperheroLogic>())
+        public MainWindowViewModel() : this(IsInDesignMode ? null : Ioc.Default.GetService<ISuperheroLogic>())
         {
 
         }
-      
     }
 }
