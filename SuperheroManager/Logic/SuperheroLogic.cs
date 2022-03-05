@@ -42,5 +42,11 @@ namespace SuperheroManager.Logic
         {
             SuperheroesInHQ.Add(superhero);
         }
+
+        public void RemoveFromBattle(Superhero superhero)
+        {
+            SuperheroesInBattle.Remove(superhero);
+            Messenger.Send("Superhero Removed From Battle", "SuperheroInfo");
+        }
     }
 }
