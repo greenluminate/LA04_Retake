@@ -17,13 +17,16 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </Window.Resources>
+    <Window.DataContext>
+        <vms:CreateSuperheroWindowViewModel/>
+    </Window.DataContext>
     <StackPanel x:Name="stack_creator">
         <Label Content="Name" Padding="10" Background="LightBlue"/>
-        <TextBox x:Name="tb_name" Text="" Padding="10"/>
+        <TextBox x:Name="tb_name" Text="{Binding NewHero.Name}" Padding="10"/>
         <Label Content="Speed" Padding="10" Background="LightBlue"/>
-        <TextBox x:Name="tb_speed" Text="" Padding="10"/>
+        <TextBox x:Name="tb_speed" Text="{Binding NewHero.Speed}" Padding="10"/>
         <Label Content="Power" Padding="10" Background="LightBlue"/>
-        <TextBox x:Name="tb_power" Text="" Padding="10"/>
+        <TextBox x:Name="tb_power" Text="{Binding NewHero.Power}" Padding="10"/>
         <Label Content="Side" Padding="10" Background="LightBlue"/>
         <WrapPanel x:Name="wp_side">
             <RadioButton GroupName="rb_side" Content="{Binding Source={StaticResource sideEnumData}, Path=[0], Mode=OneWay}" IsChecked="True" Margin="10"/>

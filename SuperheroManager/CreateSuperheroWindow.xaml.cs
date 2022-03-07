@@ -25,25 +25,20 @@ namespace SuperheroManager
         public CreateSuperheroWindow()
         {
             InitializeComponent();
-            this.DataContext = new CreateSuperheroWindowViewModel();
+ 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Superhero newSuperhero = new Superhero();
-            newSuperhero.Name = tb_name.Text;
-            newSuperhero.Power = int.Parse(tb_power.Text);
-            newSuperhero.Speed = int.Parse(tb_speed.Text);
-
             foreach (var item in wp_side.Children)
             {
                 if ((item as RadioButton).IsChecked.Value)
                 {
-                    newSuperhero.Side = (SideEnum)Enum.Parse(typeof(SideEnum), (item as RadioButton).Content.ToString());
+                    (this.DataContext as CreateSuperheroWindowViewModel).NewHero.Side = (SideEnum)Enum.Parse(typeof(SideEnum), (item as RadioButton).Content.ToString());
                 }
             }
 
-            (this.DataContext as CreateSuperheroWindowViewModel).Setup(newSuperhero);
+            (this.DataContext as CreateSuperheroWindowViewModel).Setup();
             this.DialogResult = true;
         }
     }
